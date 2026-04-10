@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Destinations — WanderBlog</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .filter-bar {
+      text-align: center;
+      margin: 30px 0 10px;
+    }
+    .filter-btn {
+      background: #e0f4f1;
+      color: #1a6b6b;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 20px;
+      margin: 4px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .filter-btn.active, .filter-btn:hover {
+      background: #1a6b6b;
+      color: #fff;
+    }
+    .dest-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      padding: 0 60px 60px;
+    }
+  </style>
+</head>
+<body>
+<nav>
+  <a class="logo" href="index.html">🌍 WanderBlog</a>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="destinations.html">Destinations</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+<div class="page-header">
+  <h1>All Destinations</h1>
+  <p>Find your next adventure — filtered by continent</p>
+</div>
+<div class="filter-bar">
+  <button class="filter-btn active" onclick="filter('all', this)">All</button>
+  <button class="filter-btn" onclick="filter('asia', this)">Asia</button>
+  <button class="filter-btn" onclick="filter('europe', this)">Europe</button>
+  <button class="filter-btn" onclick="filter('americas', this)">Americas</button>
+</div>
+<div class="dest-grid" id="destGrid">
+  <div class="card" data-continent="asia">
+    <img src="images/bali.jpg" alt="Bali">
+    <div class="card-body">
+      <span class="tag">Beach</span>
+      <h3>Bali, Indonesia</h3>
+      <p>Tropical paradise with temples, rice fields, and surf beaches.</p>
+    </div>
+  </div>
+  <div class="card" data-continent="asia">
+    <img src="images/kyoto.jpg" alt="Kyoto">
+    <div class="card-body">
+      <span class="tag">Culture</span>
+      <h3>Kyoto, Japan</h3>
+      <p>Ancient shrines, bamboo groves, and traditional tea houses.</p>
+    </div>
+  </div>
+  <div class="card" data-continent="europe">
+    <img src="images/paris.jpg" alt="Paris">
+    <div class="card-body">
+      <span class="tag">City</span>
+      <h3>Paris, France</h3>
+      <p>The city of lights — art, fashion, and timeless charm.</p>
+    </div>
+  </div>
+  <div class="card" data-continent="europe">
+    <img src="images/santorini.jpg" alt="Santorini">
+    <div class="card-body">
+      <span class="tag">Beach</span>
+      <h3>Santorini, Greece</h3>
+      <p>White-washed cliffs, blue domes, and stunning sunsets.</p>
+    </div>
+  </div>
+  <div class="card" data-continent="americas">
+    <img src="images/patagonia.jpg" alt="Patagonia">
+    <div class="card-body">
+      <span class="tag">Adventure</span>
+      <h3>Patagonia, Argentina</h3>
+      <p>Wild glaciers and jagged mountains at the end of the world.</p>
+    </div>
+  </div>
+  <div class="card" data-continent="americas">
+    <img src="images/machu-picchu.jpg" alt="Machu Picchu">
+    <div class="card-body">
+      <span class="tag">History</span>
+      <h3>Machu Picchu, Peru</h3>
+      <p>Inca ruins hidden high in the Andes mountains.</p>
+    </div>
+  </div>
+</div>
+<footer>
+  <p>Follow us: <a href="#">Instagram</a> <a href="#">Twitter</a> <a href="#">YouTube</a></p>
+  <p style="margin-top:8px;">© 2025 WanderBlog. All rights reserved.</p>
+</footer>
+<script>
+function filter(continent, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('#destGrid .card').forEach(card => {
+    card.style.display = (continent === 'all' || card.dataset.continent === continent) ? 'block' : 'none';
+  });
+}
+</script>
+</body>
+</html>
